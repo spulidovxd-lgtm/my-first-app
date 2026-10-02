@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Clicks - Colegio Bolívar</title>
+</head>
+<body>
+  <h1>Eventos Colegio Bolívar</h1>
+  <p>Clicks registrados:</p>
+  <h2 id="contador">0</h2>
+
+  <button id="clickBtn">¡Haz Click!</button>
+
+  <script>
+    let clicks = 0;
+
+    const contador = document.getElementById("contador");
+    const boton = document.getElementById("clickBtn");
+
+    boton.addEventListener("click", function() {
+      clicks++;
+      contador.textContent = clicks;
+    });
+  </script>
+</body>
+</html>
