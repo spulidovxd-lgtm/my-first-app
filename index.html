@@ -4,22 +4,183 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contador de Clicks - Colegio Bolívar</title>
-</head>
-<body>
-  <h1>Eventos Colegio Bolívar</h1>
-  <p>Clicks registrados:</p>
-  <h2 id="contador">0</h2>
 
-  <button id="clickBtn">¡Haz Click!</button>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #071225;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #101e35;
+      padding: 45px 35px;
+      border: 1px solid #203653;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 0 35px rgba(0, 255, 255, 0.08);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .counter-box {
+      background: #081426;
+      border: 1px solid #164e63;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .counter-label {
+      color: #67e8f9;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    #contador {
+      font-size: 64px;
+      font-weight: bold;
+      color: #22d3ee;
+      text-shadow: 0 0 18px rgba(34, 211, 238, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    button {
+      padding: 15px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    #clickBtn {
+      background: #22d3ee;
+      color: #071225;
+      box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
+    }
+
+    #clickBtn:hover {
+      background: #67e8f9;
+      box-shadow: 0 0 28px rgba(34, 211, 238, 0.55);
+      transform: translateY(-2px);
+    }
+
+    #resetBtn {
+      background: transparent;
+      color: #f87171;
+      border: 1px solid #f87171;
+    }
+
+    #resetBtn:hover {
+      background: rgba(248, 113, 113, 0.12);
+      box-shadow: 0 0 15px rgba(248, 113, 113, 0.2);
+    }
+
+    .footer {
+      margin-top: 28px;
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    button:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 35px 22px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+
+      #contador {
+        font-size: 54px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>Colegio Bolívar</h1>
+    <p class="subtitle">Contador interactivo de eventos</p>
+
+    <section class="counter-box" aria-live="polite">
+      <p class="counter-label">Clicks registrados</p>
+      <h2 id="contador">0</h2>
+    </section>
+
+    <div class="buttons">
+      <button id="clickBtn" type="button">
+        + Registrar Click
+      </button>
+
+      <button id="resetBtn" type="button">
+        Reiniciar contador
+      </button>
+    </div>
+
+    <p class="footer">COLEGIO BOLÍVAR · EVENTOS</p>
+  </main>
 
   <script>
     let clicks = 0;
 
     const contador = document.getElementById("contador");
     const boton = document.getElementById("clickBtn");
+    const resetBtn = document.getElementById("resetBtn");
 
-    boton.addEventListener("click", function() {
+    boton.addEventListener("click", function () {
       clicks++;
+      contador.textContent = clicks;
+
+      contador.style.transform = "scale(1.15)";
+
+      setTimeout(function () {
+        contador.style.transform = "scale(1)";
+      }, 150);
+    });
+
+    resetBtn.addEventListener("click", function () {
+      clicks = 0;
       contador.textContent = clicks;
     });
   </script>
