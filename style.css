@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +22,7 @@ body {
     border: 1px solid #203653;
     border-radius: 20px;
     text-align: center;
-    max-width: 450px;
+    max-width: 480px;
     width: 100%;
     box-shadow: 0 0 35px rgba(0, 255, 255, 0.08);
 }
@@ -61,14 +62,57 @@ h1 {
 
 #tituloEvento:focus {
     border-color: #22d3ee;
-    box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
 }
 
-.counter-box {
+/* Selección de duración */
+
+.time-settings {
+    margin-bottom: 22px;
+}
+
+.section-label {
+    color: #67e8f9;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.duration-selector {
+    display: flex;
+    gap: 8px;
+}
+
+.duration-btn {
+    flex: 1;
+    padding: 12px 5px;
+    background: #172943;
+    color: #94a3b8;
+    border: 1px solid #29415e;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.duration-btn.active {
+    color: #22d3ee;
+    border-color: #22d3ee;
+    background: #0c263b;
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.2);
+}
+
+.duration-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Temporizador */
+
+.timer-box {
     background: #081426;
     border: 1px solid #164e63;
     border-radius: 16px;
-    padding: 25px;
+    padding: 20px;
     margin-bottom: 22px;
 }
 
@@ -80,19 +124,21 @@ h1 {
     margin-bottom: 12px;
 }
 
-#contador {
-    font-size: 64px;
+#timer {
+    font-size: 42px;
     font-weight: bold;
     color: #22d3ee;
     text-shadow: 0 0 18px rgba(34, 211, 238, 0.5);
-    transition: transform 0.15s ease;
+    font-variant-numeric: tabular-nums;
 }
 
-.unit {
+#timerStatus {
     color: #94a3b8;
-    margin-top: 8px;
-    font-size: 14px;
+    font-size: 13px;
+    margin-top: 10px;
 }
+
+/* Selector de modo */
 
 .mode-selector {
     display: flex;
@@ -119,6 +165,33 @@ h1 {
     background: #0c263b;
     box-shadow: 0 0 12px rgba(34, 211, 238, 0.15);
 }
+
+/* Contador */
+
+.counter-box {
+    background: #081426;
+    border: 1px solid #164e63;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 22px;
+}
+
+#contador {
+    font-size: 64px;
+    font-weight: bold;
+    color: #22d3ee;
+    text-shadow: 0 0 18px rgba(34, 211, 238, 0.5);
+    transition: transform 0.15s ease;
+    font-variant-numeric: tabular-nums;
+}
+
+.unit {
+    color: #94a3b8;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Botones principales */
 
 .buttons {
     display: flex;
@@ -147,10 +220,18 @@ button {
     box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
 }
 
-#clickBtn:hover {
+#clickBtn:hover:not(:disabled) {
     background: #67e8f9;
     box-shadow: 0 0 28px rgba(34, 211, 238, 0.55);
     transform: translateY(-2px);
+}
+
+#clickBtn:disabled {
+    background: #334155;
+    color: #94a3b8;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
 }
 
 #resetBtn {
@@ -169,11 +250,35 @@ button:focus-visible {
     outline-offset: 4px;
 }
 
+/* Resultado final */
+
+.result-box {
+    margin-top: 22px;
+    padding: 20px;
+    background: #0c263b;
+    border: 1px solid #22d3ee;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.12);
+}
+
+.result-box h3 {
+    color: #67e8f9;
+    margin-bottom: 10px;
+}
+
+.result-box p {
+    color: white;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
 .footer {
     margin-top: 25px;
     color: #64748b;
     font-size: 12px;
 }
+
+/* Diseño adaptable */
 
 @media (max-width: 480px) {
     .container {
@@ -186,5 +291,13 @@ button:focus-visible {
 
     #contador {
         font-size: 54px;
+    }
+
+    #timer {
+        font-size: 36px;
+    }
+
+    .duration-btn {
+        font-size: 12px;
     }
 }

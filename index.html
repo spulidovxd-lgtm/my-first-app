@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Contador de Eventos - Colegio Bolívar</title>
 
     <link rel="stylesheet" href="style.css">
@@ -10,11 +12,13 @@
 </head>
 
 <body>
+
     <main class="container">
 
         <h1 id="tituloPrincipal">Colegio Bolívar</h1>
         <p class="subtitle">Contador interactivo de eventos</p>
 
+        <!-- Cambiar título -->
         <label class="input-label" for="tituloEvento">
             Cambiar título del evento:
         </label>
@@ -26,17 +30,61 @@
             value="Colegio Bolívar"
         >
 
+        <!-- Selección de duración -->
+        <section class="time-settings">
+
+            <p class="section-label">Duración de la partida</p>
+
+            <div class="duration-selector">
+
+                <button class="duration-btn active"
+                    data-duration="10" type="button">
+                    10 segundos
+                </button>
+
+                <button class="duration-btn"
+                    data-duration="20" type="button">
+                    20 segundos
+                </button>
+
+                <button class="duration-btn"
+                    data-duration="30" type="button">
+                    30 segundos
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Temporizador -->
+        <section class="timer-box">
+
+            <p class="counter-label">Tiempo transcurrido</p>
+
+            <h2 id="timer">0.000 s</h2>
+
+            <p id="timerStatus">Esperando primer click...</p>
+
+        </section>
+
+        <!-- Selector de contador -->
         <div class="mode-selector">
-            <button class="mode-btn active" id="totalBtn" type="button">
+
+            <button class="mode-btn active"
+                id="totalBtn" type="button">
                 Clicks totales
             </button>
 
-            <button class="mode-btn" id="cpsBtn" type="button">
+            <button class="mode-btn"
+                id="cpsBtn" type="button">
                 CPS
             </button>
+
         </div>
 
+        <!-- Contador -->
         <section class="counter-box" aria-live="polite">
+
             <p class="counter-label" id="modoLabel">
                 Clicks registrados
             </p>
@@ -44,9 +92,12 @@
             <h2 id="contador">0</h2>
 
             <p class="unit" id="unidad">clicks</p>
+
         </section>
 
+        <!-- Botones principales -->
         <div class="buttons">
+
             <button id="clickBtn" type="button">
                 + Registrar Click
             </button>
@@ -54,10 +105,18 @@
             <button id="resetBtn" type="button">
                 Reiniciar Contador
             </button>
+
+        </div>
+
+        <!-- Resultado -->
+        <div id="resultado" class="result-box" aria-live="polite" hidden>
+            <h3>¡Partida finalizada!</h3>
+            <p id="resultadoTexto"></p>
         </div>
 
         <p class="footer">COLEGIO BOLÍVAR · EVENTOS</p>
 
     </main>
+
 </body>
 </html>
