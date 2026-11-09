@@ -13,110 +13,212 @@
 
 <body>
 
-    <main class="container">
+<main class="container">
 
-        <h1 id="tituloPrincipal">Colegio Bolívar</h1>
-        <p class="subtitle">Contador interactivo de eventos</p>
+    <h1 id="tituloPrincipal">Colegio Bolívar</h1>
+    <p class="subtitle">Contador interactivo de eventos</p>
 
-        <!-- Cambiar título -->
-        <label class="input-label" for="tituloEvento">
-            Cambiar título del evento:
+    <!-- Cambiar título -->
+    <label class="input-label" for="tituloEvento">
+        Nombre del evento:
+    </label>
+
+    <input
+        type="text"
+        id="tituloEvento"
+        value="Colegio Bolívar"
+        placeholder="Escribe el nombre del evento..."
+    >
+
+    <!-- Registro de jugador -->
+    <section class="player-box">
+
+        <label class="input-label" for="nombreJugador">
+            Nombre del jugador:
         </label>
 
         <input
             type="text"
-            id="tituloEvento"
-            placeholder="Escribe el nombre del evento..."
-            value="Colegio Bolívar"
+            id="nombreJugador"
+            maxlength="20"
+            placeholder="Escribe tu nombre..."
+            autocomplete="off"
         >
 
-        <!-- Selección de duración -->
-        <section class="time-settings">
+        <button id="startBtn" type="button">
+            Iniciar partida
+        </button>
 
-            <p class="section-label">Duración de la partida</p>
+        <p id="playerStatus">Registra tu nombre para comenzar.</p>
 
-            <div class="duration-selector">
+    </section>
 
-                <button class="duration-btn active"
-                    data-duration="10" type="button">
-                    10 segundos
-                </button>
+    <!-- Selección de duración -->
+    <section class="time-settings">
 
-                <button class="duration-btn"
-                    data-duration="20" type="button">
-                    20 segundos
-                </button>
+        <p class="section-label">Duración de la partida</p>
 
-                <button class="duration-btn"
-                    data-duration="30" type="button">
-                    30 segundos
-                </button>
+        <div class="duration-selector">
 
-            </div>
-
-        </section>
-
-        <!-- Temporizador -->
-        <section class="timer-box">
-
-            <p class="counter-label">Tiempo transcurrido</p>
-
-            <h2 id="timer">0.000 s</h2>
-
-            <p id="timerStatus">Esperando primer click...</p>
-
-        </section>
-
-        <!-- Selector de contador -->
-        <div class="mode-selector">
-
-            <button class="mode-btn active"
-                id="totalBtn" type="button">
-                Clicks totales
+            <button class="duration-btn active"
+                data-duration="10" type="button">
+                10 segundos
             </button>
 
-            <button class="mode-btn"
-                id="cpsBtn" type="button">
-                CPS
+            <button class="duration-btn"
+                data-duration="20" type="button">
+                20 segundos
+            </button>
+
+            <button class="duration-btn"
+                data-duration="30" type="button">
+                30 segundos
             </button>
 
         </div>
 
-        <!-- Contador -->
-        <section class="counter-box" aria-live="polite">
+    </section>
 
-            <p class="counter-label" id="modoLabel">
-                Clicks registrados
-            </p>
+    <!-- Temporizador -->
+    <section class="timer-box">
 
-            <h2 id="contador">0</h2>
+        <p class="counter-label">Tiempo transcurrido</p>
 
-            <p class="unit" id="unidad">clicks</p>
+        <h2 id="timer">0.000 s</h2>
 
-        </section>
+        <p id="timerStatus">Esperando partida...</p>
 
-        <!-- Botones principales -->
-        <div class="buttons">
+    </section>
 
-            <button id="clickBtn" type="button">
-                + Registrar Click
-            </button>
+    <!-- Selector de modo -->
+    <div class="mode-selector">
 
-            <button id="resetBtn" type="button">
-                Reiniciar Contador
+        <button class="mode-btn active"
+            id="totalBtn" type="button">
+            Clicks totales
+        </button>
+
+        <button class="mode-btn"
+            id="cpsBtn" type="button">
+            CPS
+        </button>
+
+    </div>
+
+    <!-- Contador -->
+    <section class="counter-box" aria-live="polite">
+
+        <p class="counter-label" id="modoLabel">
+            Clicks registrados
+        </p>
+
+        <h2 id="contador">0</h2>
+
+        <p class="unit" id="unidad">clicks</p>
+
+    </section>
+
+    <!-- Botones principales -->
+    <div class="buttons">
+
+        <button id="clickBtn" type="button" disabled>
+            + Registrar Click
+        </button>
+
+        <button id="resetBtn" type="button">
+            Reiniciar Contador
+        </button>
+
+        <button id="leaderboardBtn" type="button">
+            🏆 Ver Leaderboard
+        </button>
+
+    </div>
+
+    <!-- Resultado -->
+    <section id="resultado" class="result-box" hidden>
+
+        <h3 id="resultadoTitulo">¡Partida finalizada!</h3>
+
+        <p id="resultadoTexto"></p>
+
+    </section>
+
+    <!-- Leaderboard -->
+    <section id="leaderboard" class="leaderboard-box" hidden>
+
+        <div class="leaderboard-header">
+
+            <h2>🏆 Leaderboard</h2>
+
+            <button id="closeLeaderboardBtn" type="button"
+                class="close-btn">
+                ✕
             </button>
 
         </div>
 
-        <!-- Resultado -->
-        <div id="resultado" class="result-box" aria-live="polite" hidden>
-            <h3>¡Partida finalizada!</h3>
-            <p id="resultadoTexto"></p>
+        <p class="leaderboard-subtitle">
+            Los mejores jugadores del Colegio Bolívar
+        </p>
+
+        <!-- Categorías -->
+        <div class="ranking-selector">
+
+            <button class="ranking-btn active"
+                data-ranking="10" type="button">
+                10s
+            </button>
+
+            <button class="ranking-btn"
+                data-ranking="20" type="button">
+                20s
+            </button>
+
+            <button class="ranking-btn"
+                data-ranking="30" type="button">
+                30s
+            </button>
+
         </div>
 
-        <p class="footer">COLEGIO BOLÍVAR · EVENTOS</p>
+        <!-- Tabla -->
+        <div class="table-container">
 
-    </main>
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Pos.</th>
+                        <th>Jugador</th>
+                        <th>Clicks</th>
+                        <th>CPS</th>
+                    </tr>
+                </thead>
+
+                <tbody id="leaderboardBody">
+
+                    <tr>
+                        <td colspan="4">
+                            No hay resultados todavía.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="leaderboard-note">
+            Se guardan los mejores 10 resultados de cada categoría.
+        </p>
+
+    </section>
+
+    <p class="footer">COLEGIO BOLÍVAR · EVENTOS</p>
+
+</main>
 
 </body>
 </html>
